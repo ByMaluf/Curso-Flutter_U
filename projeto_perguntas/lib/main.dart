@@ -77,20 +77,29 @@ class _MyCalculatorState extends State<MyCalculator> {
   }
 
   Widget buildButton(String buttonText) {
-    return Expanded(
+    return Container(
+      width: 80.0,
+      height: 80.0,
       child: OutlinedButton(
         onPressed: () {
           _buttonPressed(buttonText);
         },
         style: ButtonStyle(
-          minimumSize: MaterialStateProperty.all(Size(80, 80)), // Define o tamanho do botão
-          padding: MaterialStateProperty.all(EdgeInsets.all(20)), // Define o espaçamento interno
+          minimumSize: MaterialStateProperty.all(Size(80, 80)),
+          padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+          foregroundColor: MaterialStateProperty.all(Colors.black),
+          backgroundColor: MaterialStateProperty.all(Colors.grey[300]), // Cor cinza semitransparente
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(0),
+          )),
         ),
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
+        child: Center(
+          child: Text(
+            buttonText,
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -102,7 +111,7 @@ class _MyCalculatorState extends State<MyCalculator> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Calculadora'),
+        title: Text('Calculator'),
       ),
       body: Column(
         children: <Widget>[
